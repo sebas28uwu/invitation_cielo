@@ -1285,7 +1285,7 @@ body {
         top: calc(100vh - 75%);  /* Subir 60px más que los otros slides */
     }
     #slide-2 [id^=typed-wrapper] {
-        top: calc(100vh - 75%); /* Subir 60px más que los otros slides */
+        top: calc(100vh - 90%); /* Subir 60px más que los otros slides */
     }
    
     #slide-4 [id^=typed-wrapper] {
@@ -1324,7 +1324,7 @@ body {
         left: 120px !important;
         right: 24px !important;
        
-        bottom: 250px !important;
+        bottom: 225px !important;
         z-index: 999 !important;
     }
     .mariposa.butterfly-5 {
