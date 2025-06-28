@@ -1277,13 +1277,23 @@ body {
 
     /* Ajuste específico para slide 0 - subir el texto */
     #slide-0 [id^=typed-wrapper] {
-        bottom: 280px; /* Subir 60px más que los otros slides */
+        top: calc(100vh - 85%);/* Subir 60px más que los otros slides */
     }
 
     /* Ajuste específico para slide 1 - subir el texto */
     #slide-1 [id^=typed-wrapper] {
-        bottom: 280px; /* Subir 60px más que los otros slides */
+        top: calc(100vh - 75%);  /* Subir 60px más que los otros slides */
     }
+    #slide-2 [id^=typed-wrapper] {
+        top: calc(100vh - 75%); /* Subir 60px más que los otros slides */
+    }
+   
+    #slide-4 [id^=typed-wrapper] {
+        top: calc(100vh - 75%); /* Subir 60px más que los otros slides */
+    }
+ 
+
+    
 
     /* Mariposa a la derecha, a media altura (amarilla) */
     .mariposa.butterfly-2 {
@@ -1799,11 +1809,10 @@ body {
     }
 }
 
-.slide5-content {
+#slide-5 .slide-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     min-height: 100vh;
     padding-top: 32px;
     color: #f9bbcd;
@@ -1918,8 +1927,17 @@ body {
 }
 
 @media (max-width: 768px) {
+
+#slide-5 .quinceanera-img {
+    width: 280px;
+    left: 50%;
+    bottom:  55px !important;
+    transform: translateX(-50%) translateY(0);
+    z-index: 20 !important;
+}
+
     .slide5-content {
-        padding-top: 18px;
+         top: calc(100vh - 90%) !important;
     }
     .slide5-titulo {
         gap: 4px;
@@ -2166,4 +2184,115 @@ body {
         transform: translate(-50%, 0) !important;
         margin-top: 0 !important;
     }
-} 
+}
+
+.fade-in-up {
+    animation: fadeInUpBlock 0.7s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes fadeInUpBlock {
+    0% {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+@media (max-width: 768px) {
+    #slide-3 .slide-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 0;
+       
+    }
+    
+    #slide-3 .tiara {
+        position: absolute;
+        top: 5% !important;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 25;
+        width: 80px;
+        height: auto;
+    }
+    
+    #slide-3 .bloque-barra-texto {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        top: -100px !important;
+    }
+}
+
+#slide-3 .slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+}
+
+#slide-3 .tiara {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+}
+
+#slide-3 .bloque-barra-texto {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.nota-agradecimiento {
+    background: #18141c;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 38px 28px;
+    max-width: 420px;
+    min-width: 220px;
+    gap: 12px;
+    margin: 0 auto;
+    border: 1.5px solid #f9bbcd;
+}
+.nota-agradecimiento-titulo {
+    color: #fff;
+    font-family: 'Dancing Script', 'Alex Brush', 'Parisienne', cursive;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+.nota-agradecimiento-texto {
+    color: #fff;
+    font-family: 'Dancing Script', 'Alex Brush', 'Parisienne', cursive;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+    text-align: center;
+}
+.nota-agradecimiento-btn {
+    background: linear-gradient(135deg,#dda0dd,#ffb6c1);
+    color: white;
+    border: none;
+    padding: 1rem 2.2rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-family: 'Alex Brush', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(221,160,221,0.3);
+    margin-top: 0.5rem;
+}
