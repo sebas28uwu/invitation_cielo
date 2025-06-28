@@ -244,24 +244,21 @@ class XVInvitation {
         ];
 
         let lineIndex = 0;
-        let charIndex = 0;
-        let typingSpeed = 12;
-        let currentLine = '';
         const timeouts = [];
 
         const typeLine = () => {
             if (lineIndex >= lines.length) return;
-            const line = lines[lineIndex];
-            if (charIndex < line.length) {
-                currentLine += line[charIndex];
-                typedElement.innerHTML = lines.slice(0, lineIndex).join('') + currentLine;
-                charIndex++;
-                timeouts.push(setTimeout(typeLine, typingSpeed));
-            } else {
-                lineIndex++;
-                charIndex = 0;
-                currentLine = '';
-                timeouts.push(setTimeout(typeLine, 400));
+            // Mostrar todos los bloques anteriores normalmente
+            let html = '';
+            for (let i = 0; i < lineIndex; i++) {
+                html += lines[i];
+            }
+            // El bloque actual con animación
+            html += `<div class="fade-in-up">${lines[lineIndex]}</div>`;
+            typedElement.innerHTML = html;
+            lineIndex++;
+            if (lineIndex < lines.length) {
+                timeouts.push(setTimeout(typeLine, 700));
             }
         };
         typeLine();
@@ -960,12 +957,9 @@ function crearFormularioRegistro() {
             formUI.querySelector('#movil').focus();
             return;
         }
-        // Generar ID único
-        const id = 'XV_' + Date.now() + '_' + Math.floor(Math.random()*10000);
         const cantidad = parseInt(fd.get('cantidad'));
         const datos = {
             data: {
-                id: id,
                 nombre: fd.get('nombre'),
                 apellido: fd.get('apellido'),
                 cantidad_invitados: cantidad,
@@ -981,7 +975,35 @@ function crearFormularioRegistro() {
                 headers: {'Content-Type':'application/json'},
                 body: JSON.stringify(datos)
             });
-            formContainer.innerHTML = `<div style='text-align:center;padding:2rem;'><h2 style='color:#8b5a8b;font-family:"Alex Brush",cursive;font-size:2.2rem;margin-bottom:1rem;'>¡Gracias! ✨</h2><p style='color:#8b5a8b;font-size:1.2rem;margin-bottom:1rem;'>Tu confirmación ha sido recibida exitosamente.<br>Recibirás tu entrada por WhatsApp.</p><button onclick='location.reload()' style='background:linear-gradient(135deg,#dda0dd,#ffb6c1);color:white;border:none;padding:1rem 2rem;border-radius:25px;font-size:1.2rem;font-family:"Alex Brush",cursive;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 25px rgba(221,160,221,0.3);'>Volver al inicio</button></div>`;
+            // Ocultar el formulario
+            formContainer.innerHTML = '';
+            formContainer.style.display = 'none';
+
+            // Crear overlay de agradecimiento
+            let overlay = document.getElementById('agradecimiento-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'agradecimiento-overlay';
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100vw';
+                overlay.style.height = '100vh';
+                overlay.style.background = 'rgba(24, 20, 28, 0.92)';
+                overlay.style.display = 'flex';
+                overlay.style.alignItems = 'center';
+                overlay.style.justifyContent = 'center';
+                overlay.style.zIndex = '3000';
+                overlay.innerHTML = `
+                  <div class="nota-agradecimiento">
+                    <div class="nota-agradecimiento-titulo">¡Gracias! <span style='font-size:1.3em;'>✨</span></div>
+                    <div class="nota-agradecimiento-texto">En los próximos días recibirás tu entrada por WhatsApp.</div>
+                    <button onclick='location.reload()' class="nota-agradecimiento-btn">Volver al inicio</button>
+                  </div>`;
+                document.body.appendChild(overlay);
+            } else {
+                overlay.style.display = 'flex';
+            }
         } catch (error) {
             formContainer.innerHTML = `<div style='text-align:center;padding:2rem;'><h2 style='color:#e74c3c;font-family:"Alex Brush",cursive;font-size:2.2rem;margin-bottom:1rem;'>¡Ups! 😔</h2><p style='color:#8b5a8b;font-size:1.2rem;margin-bottom:2rem;'>Hubo un error al enviar los datos. Por favor, intenta de nuevo.</p><button onclick='location.reload()' style='background:linear-gradient(135deg,#dda0dd,#ffb6c1);color:white;border:none;padding:1rem 2rem;border-radius:25px;font-size:1.2rem;font-family:"Alex Brush",cursive;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 25px rgba(221,160,221,0.3);'>Intentar de nuevo</button></div>`;
         }
