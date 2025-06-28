@@ -231,12 +231,12 @@ class XVInvitation {
             `<div class='slide5-direccion'>Av. Metropolitana 1306, Santa Anita.</div>`,
             `<div class='slide5-botones'>
                 <div class='slide5-boton'>
-                    <img src='/img/decoration/generar_codigo.png' alt='QR' class='slide5-icono'>
+                    <img src='/img/generar_codigo.png' alt='QR' class='slide5-icono'>
                     <div class='slide5-boton-titulo'>Confirma tu<br>asistencia</div>
                     <button id='btn-generar-codigo' class='slide5-boton-desc slide5-btn-link'>Da Click Aquí</button>
                 </div>
                 <div class='slide5-boton'>
-                    <img src='/img/decoration/codigo_vestimenta.png' alt='Vestimenta' class='slide5-icono'>
+                    <img src='/img/codigo_vestimenta.png' alt='Vestimenta' class='slide5-icono'>
                     <div class='slide5-boton-titulo'>Código de<br>vestuario</div>
                     <div class='slide5-boton-desc'>Formal</div>
                 </div>
@@ -680,7 +680,7 @@ class XVInvitation {
         // Crear loading screen con imagen y brillitos
         const loading = document.createElement('div');
         loading.className = 'loading';
-        loading.innerHTML = `<img src="/img/decoration/loading.png" alt="Cargando..." class="loading-img">
+        loading.innerHTML = `<img src="/img/loading.png" alt="Cargando..." class="loading-img">
             <div class="loading-sparkles"></div>`;
         document.body.appendChild(loading);
 
