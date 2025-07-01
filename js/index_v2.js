@@ -62,7 +62,7 @@ class XVInvitation {
         }
 
         const lines = [
-            "Hace 15 años nació una hermosa niña, enviada por Dios para ser creada y formada como el más grande tesoro.",
+            "Hace 15 años nació una hermosa niña, enviada por Dios para ser criada y formada como el más grande tesoro.",
             "Hay momentos en la vida que imaginamos, soñamos y esperamos.",
             "Uno de esos momentos ha llegado..."
         ];
