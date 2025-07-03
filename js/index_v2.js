@@ -970,7 +970,7 @@ function crearFormularioRegistro() {
             datos.data[`invitado_${i-1}`] = fd.get(`invitado_${i-1}`);
         }
         try {
-            await fetch('https://sheetdb.io/api/v1/fouso319wc8rv', {
+            await fetch('https://api.sheetbest.com/sheets/dadd513d-53ef-403d-b848-329bd5004a1f', {
                 method: 'POST',
                 headers: {'Content-Type':'application/json'},
                 body: JSON.stringify(datos)
