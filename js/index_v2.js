@@ -950,6 +950,7 @@ function crearFormularioRegistro() {
     formUI.onsubmit = async function(e) {
         e.preventDefault();
         const fd = new FormData(formUI);
+        console.log('Form values:', Object.fromEntries(fd.entries()));
         // Validar número de WhatsApp (8 a 15 dígitos, solo números)
         const movil = fd.get('movil').replace(/\s+/g, '');
         if (!/^\d{8,15}$/.test(movil)) {
@@ -957,24 +958,24 @@ function crearFormularioRegistro() {
             formUI.querySelector('#movil').focus();
             return;
         }
-        const cantidad = parseInt(fd.get('cantidad'));
+        const cantidad = fd.get('cantidad');
         const datos = {
-            data: {
-                nombre: fd.get('nombre'),
-                apellido: fd.get('apellido'),
-                cantidad_invitados: cantidad,
-                movil: movil
-            }
+            nombre: fd.get('nombre'),
+            apellido: fd.get('apellido'),
+            cantidad_invitados: cantidad,
+            movil: movil
         };
-        for (let i = 2; i <= cantidad; i++) {
-            datos.data[`invitado_${i-1}`] = fd.get(`invitado_${i-1}`);
+        for (let i = 2; i <= parseInt(cantidad); i++) {
+            datos[`invitado_${i-1}`] = fd.get(`invitado_${i-1}`);
         }
         try {
-            await fetch('https://api.sheetbest.com/sheets/dadd513d-53ef-403d-b848-329bd5004a1f', {
+            const response = await fetch('https://api.sheetbest.com/sheets/dadd513d-53ef-403d-b848-329bd5004a1f', {
                 method: 'POST',
                 headers: {'Content-Type':'application/json'},
                 body: JSON.stringify(datos)
             });
+            const result = await response.json();
+            console.log('Respuesta de SheetBest:', result);
             // Ocultar el formulario
             formContainer.innerHTML = '';
             formContainer.style.display = 'none';
