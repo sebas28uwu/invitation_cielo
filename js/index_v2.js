@@ -226,20 +226,10 @@ class XVInvitation {
                 <span class='slide5-anios'>años</span>
             </div>`,
             `<div class='slide5-nombre'>Cielo Noelia Saori</div>`,
-            `<div class='slide5-subtitulo'>Acompáñame a celebrar este momento<br>tan importante en mi vida.</div>`,
-            `<div class='slide5-datos'><span class='slide5-fecha'>05/07/2025 |</span><span class='slide5-hora'>| 8:00 p.m.</span></div>`,
-            `<div class='slide5-direccion'>Av. Metropolitana 1306, Santa Anita.</div>`,
-            `<div class='slide5-botones'>
-                <div class='slide5-boton'>
-                    <img src='/img/generar_codigo.png' alt='QR' class='slide5-icono'>
-                    <div class='slide5-boton-titulo'>Confirma tu<br>asistencia</div>
-                    <button id='btn-generar-codigo' class='slide5-boton-desc slide5-btn-link'>Da Click Aquí</button>
-                </div>
-                <div class='slide5-boton'>
-                    <img src='/img/codigo_vestimenta.png' alt='Vestimenta' class='slide5-icono'>
-                    <div class='slide5-boton-titulo'>Código de<br>vestuario</div>
-                    <div class='slide5-boton-desc'>Formal</div>
-                </div>
+            `<div class='slide5-mensaje-final'>
+                Gracias por tu participación e interés.<br>
+                <span style='font-size:1.1em;'>La página ya está cerrada.</span><br><br>
+                <span style='font-size:0.95em;'>Con el corazón rebosante de ilusión y gratitud, cerramos esta invitación. Será un honor compartir contigo la magia de este día tan especial, que atesoraremos por siempre en nuestros recuerdos. Te esperamos con todo nuestro cariño para celebrar juntos mis quince años.</span>
             </div>`
         ];
 
@@ -746,8 +736,8 @@ class XVInvitation {
 
     // ===== NUEVO FORMULARIO DINÁMICO =====
     showForm() {
-        // Crear formulario
-        this.crearFormularioRegistro();
+        // Comentado: El formulario ya no está disponible
+        // this.crearFormularioRegistro();
     }
 }
 
@@ -776,24 +766,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    // Mostrar overlay de nota al dar click en el botón
-    document.body.addEventListener('click', function(e) {
-        if (e.target && e.target.id === 'btn-generar-codigo') {
-            e.preventDefault();
-            const overlay = document.getElementById('nota-overlay');
-            if (overlay) overlay.style.display = 'flex';
-        }
-        if (e.target && e.target.id === 'nota-ok-btn') {
-            e.preventDefault();
-            const overlay = document.getElementById('nota-overlay');
-            if (overlay) overlay.style.display = 'none';
-            // Mostrar el nuevo formulario dinámico
-            if (window.crearFormularioRegistro) {
-                window.crearFormularioRegistro();
-            }
-        }
-    });
 });
 
 // ===== CSS DINÁMICO PARA ANIMACIONES =====
@@ -824,192 +796,4 @@ const dynamicStyles = `
 // Agregar estilos dinámicos al head
 const styleSheet = document.createElement('style');
 styleSheet.textContent = dynamicStyles;
-document.head.appendChild(styleSheet);
-
-// ===== FORMULARIO ELEGANTE DESDE CERO =====
-function crearFormularioRegistro() {
-    // Usar el contenedor existente
-    const formContainer = document.getElementById('form-container');
-    if (!formContainer) return;
-    formContainer.innerHTML = '';
-    formContainer.classList.add('show');
-    formContainer.style.display = 'flex';
-    formContainer.style.alignItems = 'center';
-    formContainer.style.justifyContent = 'center';
-    formContainer.style.zIndex = '1000';
-    formContainer.style.background = 'rgba(255,255,255,0.72)';
-    formContainer.style.padding = '0';
-
-    // Botón volver
-    const btnVolver = document.createElement('button');
-    btnVolver.textContent = '← Volver';
-    btnVolver.className = 'btn-volver';
-    btnVolver.style.position = 'fixed';
-    btnVolver.style.top = '24px';
-    btnVolver.style.left = '24px';
-    btnVolver.style.background = 'rgba(255,255,255,0.3)';
-    btnVolver.style.color = '#8b5a8b';
-    btnVolver.style.border = '1.5px solid rgba(255,255,255,0.5)';
-    btnVolver.style.padding = '10px 20px';
-    btnVolver.style.borderRadius = '25px';
-    btnVolver.style.fontFamily = "'Alex Brush', cursive";
-    btnVolver.style.fontSize = '1.1rem';
-    btnVolver.style.backdropFilter = 'blur(15px)';
-    btnVolver.style.cursor = 'pointer';
-    btnVolver.style.zIndex = '1001';
-    btnVolver.onclick = () => {
-        formContainer.classList.remove('show');
-        formContainer.style.display = 'none';
-    };
-    formContainer.appendChild(btnVolver);
-
-    // Crear formulario principal
-    const formUI = document.createElement('form');
-    formUI.id = 'form-registro-xv';
-    formUI.style.background = 'rgba(255,255,255,0.72)';
-    formUI.style.borderRadius = '28px';
-    formUI.style.padding = '2.2rem 1.5rem';
-    formUI.style.maxWidth = '420px';
-    formUI.style.width = '95vw';
-    formUI.style.maxHeight = '80vh';
-    formUI.style.overflowY = 'auto';
-    formUI.style.boxShadow = '0 12px 40px 0 rgba(139,90,139,0.22), 0 2px 12px rgba(139,90,139,0.13)';
-    formUI.style.position = 'relative';
-    formUI.style.margin = '0 auto';
-    formUI.style.display = 'flex';
-    formUI.style.flexDirection = 'column';
-    formUI.style.gap = '1.2rem';
-    formUI.style.color = '#6d3576';
-    formUI.style.zIndex = '10';
-    formUI.style.alignSelf = 'center';
-    formUI.style.justifySelf = 'center';
-    formUI.style.backdropFilter = 'blur(16px)';
-    formUI.style.border = '1.5px solid rgba(221,160,221,0.18)';
-
-    formUI.innerHTML = `
-        <h2 style="color:#8b5a8b;font-family:'Alex Brush',cursive;font-size:2.1rem;text-align:center;margin-bottom:1.2rem;">Confirma tu asistencia</h2>
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required autocomplete="off" />
-        </div>
-        <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" required autocomplete="off" />
-        </div>
-        <div class="form-group">
-            <label for="cantidad">Cantidad de invitados (incluyéndote):</label>
-            <select id="cantidad" name="cantidad" required>
-                <option value="1">1 (solo yo)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        </div>
-        <div id="invitados-extra"></div>
-        <div class="form-group">
-            <label for="movil">Tu número de WhatsApp:</label>
-            <input type="text" id="movil" name="movil" required placeholder="Solo números" autocomplete="off" />
-        </div>
-        <button type="submit" style="
-            background: linear-gradient(90deg, #bc6e6e 0%, #dda0dd 100%);
-            color: #fff;
-            border: none;
-            padding: 1.1rem 2.5rem;
-            border-radius: 25px;
-            font-size: 1.15rem;
-            font-family: 'Alex Brush', cursive;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(221,160,221,0.18);
-            margin-top: 1.2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        ">Confirmar asistencia</button>
-    `;
-
-    // Generar campos de invitados extra dinámicamente
-    const cantidadSelect = formUI.querySelector('#cantidad');
-    const invitadosExtraDiv = formUI.querySelector('#invitados-extra');
-    cantidadSelect.addEventListener('change', function() {
-        const cantidad = parseInt(this.value);
-        invitadosExtraDiv.innerHTML = '';
-        for (let i = 2; i <= cantidad; i++) {
-            const div = document.createElement('div');
-            div.className = 'form-group';
-            div.innerHTML = `<label for="invitado_${i-1}">Nombre del invitado ${i-1}:</label><input type="text" id="invitado_${i-1}" name="invitado_${i-1}" required autocomplete="off" />`;
-            invitadosExtraDiv.appendChild(div);
-        }
-    });
-
-    // Envío del formulario
-    formUI.onsubmit = async function(e) {
-        e.preventDefault();
-        const fd = new FormData(formUI);
-        console.log('Form values:', Object.fromEntries(fd.entries()));
-        // Validar número de WhatsApp (8 a 15 dígitos, solo números)
-        const movil = fd.get('movil').replace(/\s+/g, '');
-        if (!/^\d{8,15}$/.test(movil)) {
-            alert('Por favor ingresa un número de WhatsApp válido (solo números, de 8 a 15 dígitos, sin espacios ni símbolos).');
-            formUI.querySelector('#movil').focus();
-            return;
-        }
-        const cantidad = fd.get('cantidad');
-        const datos = {
-            nombre: fd.get('nombre'),
-            apellido: fd.get('apellido'),
-            cantidad_invitados: cantidad,
-            movil: movil
-        };
-        for (let i = 2; i <= parseInt(cantidad); i++) {
-            datos[`invitado_${i-1}`] = fd.get(`invitado_${i-1}`);
-        }
-        try {
-            const response = await fetch('https://api.sheetbest.com/sheets/dadd513d-53ef-403d-b848-329bd5004a1f', {
-                method: 'POST',
-                headers: {'Content-Type':'application/json'},
-                body: JSON.stringify(datos)
-            });
-            const result = await response.json();
-            console.log('Respuesta de SheetBest:', result);
-            // Ocultar el formulario
-            formContainer.innerHTML = '';
-            formContainer.style.display = 'none';
-
-            // Crear overlay de agradecimiento
-            let overlay = document.getElementById('agradecimiento-overlay');
-            if (!overlay) {
-                overlay = document.createElement('div');
-                overlay.id = 'agradecimiento-overlay';
-                overlay.style.position = 'fixed';
-                overlay.style.top = '0';
-                overlay.style.left = '0';
-                overlay.style.width = '100vw';
-                overlay.style.height = '100vh';
-                overlay.style.background = 'rgba(24, 20, 28, 0.92)';
-                overlay.style.display = 'flex';
-                overlay.style.alignItems = 'center';
-                overlay.style.justifyContent = 'center';
-                overlay.style.zIndex = '3000';
-                overlay.innerHTML = `
-                  <div class="nota-agradecimiento">
-                    <div class="nota-agradecimiento-titulo">¡Gracias! <span style='font-size:1.3em;'>✨</span></div>
-                    <div class="nota-agradecimiento-texto">En los próximos días recibirás tu entrada por WhatsApp.</div>
-                    <button onclick='location.reload()' class="nota-agradecimiento-btn">Volver al inicio</button>
-                  </div>`;
-                document.body.appendChild(overlay);
-            } else {
-                overlay.style.display = 'flex';
-            }
-        } catch (error) {
-            formContainer.innerHTML = `<div style='text-align:center;padding:2rem;'><h2 style='color:#e74c3c;font-family:"Alex Brush",cursive;font-size:2.2rem;margin-bottom:1rem;'>¡Ups! 😔</h2><p style='color:#8b5a8b;font-size:1.2rem;margin-bottom:2rem;'>Hubo un error al enviar los datos. Por favor, intenta de nuevo.</p><button onclick='location.reload()' style='background:linear-gradient(135deg,#dda0dd,#ffb6c1);color:white;border:none;padding:1rem 2rem;border-radius:25px;font-size:1.2rem;font-family:"Alex Brush",cursive;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 25px rgba(221,160,221,0.3);'>Intentar de nuevo</button></div>`;
-        }
-    };
-    formContainer.appendChild(formUI);
-}
-
-window.crearFormularioRegistro = crearFormularioRegistro; 
+document.head.appendChild(styleSheet); 
