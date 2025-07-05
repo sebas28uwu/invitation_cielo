@@ -2296,3 +2296,76 @@ body {
     box-shadow: 0 8px 25px rgba(221,160,221,0.3);
     margin-top: 0.5rem;
 }
+
+/* ===== ESTILOS PARA EL MENSAJE DE AGRADECIMIENTO ===== */
+.slide5-agradecimiento {
+    text-align: center;
+    margin-top: 0.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 1s ease-out;
+}
+
+.agradecimiento-titulo {
+    color: #8b5a8b;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.agradecimiento-mensaje {
+    color: #bc6e6e;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.agradecimiento-subtitulo {
+    color: #6d3576;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .slide5-agradecimiento {
+     
+        padding: 1.5rem;
+    }
+    
+    .agradecimiento-titulo {
+        font-size: 1.5rem;
+     
+    }
+    
+    .agradecimiento-mensaje {
+        font-size: 1.2rem;
+ 
+    }
+    
+    .agradecimiento-subtitulo {
+        font-size: 0.9rem;
+    }
+}
+
+.slide5-mensaje-final {
+    color: #fff;
+    font-family: 'Dancing Script', 'Alex Brush', 'Parisienne', cursive;
+    font-size: 1.15rem;
+    text-align: center;
+    margin: 0.5rem 0 0 0;
+    line-height: 1.5;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+@media (max-width: 768px) {
+    .slide5-mensaje-final {
+        font-size: 1rem;
+        margin-top: -10px !important;
+    }
+}
